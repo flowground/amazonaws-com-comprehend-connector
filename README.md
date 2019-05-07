@@ -1,11 +1,11 @@
-# ![LOGO](logo.png) Amazon Comprehend MSP Connector
+# ![LOGO](logo.png) Amazon Comprehend **flow**ground Connector
 
 ## Description
 
-A generated MSP connector for the Amazon Comprehend API (version 2017-11-27).
+A generated **flow**ground connector for the Amazon Comprehend API (version 2017-11-27).
 
 Generated from: https://api.apis.guru/v2/specs/amazonaws.com/comprehend/2017-11-27/swagger.json<br/>
-Generated at: 2019-05-07T11:15:36+03:00
+Generated at: 2019-05-07T17:35:16+03:00
 
 ## API Description
 
@@ -565,7 +565,7 @@ Supported authorization schemes:
 
 ## License
 
-flowground :- Telekom iPaaS / amazonaws-com-comprehend-connector<br/>
+**flow**ground :- Telekom iPaaS / amazonaws-com-comprehend-connector<br/>
 Copyright © 2019, [Deutsche Telekom AG](https://www.telekom.de)<br/>
 contact: flowground@telekom.de
 
