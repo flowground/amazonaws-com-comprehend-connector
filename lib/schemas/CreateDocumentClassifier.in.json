@@ -1,0 +1,99 @@
+{
+    "type": "object",
+    "properties": {
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "properties": {
+                "ClientRequestToken": {
+                    "description": "A unique identifier for the request. If you don't set the client request token, Amazon Comprehend generates one.",
+                    "maxLength": 64,
+                    "minLength": 1,
+                    "pattern": "^[a-zA-Z0-9-]+$",
+                    "type": "string"
+                },
+                "DataAccessRoleArn": {
+                    "description": "The Amazon Resource Name (ARN) of the AWS Identity and Management (IAM) role that grants Amazon Comprehend read access to your input data.",
+                    "maxLength": 2048,
+                    "minLength": 20,
+                    "pattern": "arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+",
+                    "type": "string"
+                },
+                "DocumentClassifierName": {
+                    "description": "The name of the document classifier.",
+                    "maxLength": 63,
+                    "pattern": "^[a-zA-Z0-9](-*[a-zA-Z0-9])*",
+                    "type": "string"
+                },
+                "InputDataConfig": {
+                    "description": "Specifies the format and location of the input data for the job.",
+                    "properties": {
+                        "S3Uri": {
+                            "description": "<p>The Amazon S3 URI for the input data. The S3 bucket must be in the same region as the API endpoint that you are calling. The URI can point to a single input file or it can provide the prefix for a collection of input files.</p> <p>For example, if you use the URI <code>S3://bucketName/prefix</code>, if the prefix is a single file, Amazon Comprehend uses that file as input. If more than one file begins with the prefix, Amazon Comprehend uses all of them as input.</p>",
+                            "maxLength": 1024,
+                            "pattern": "s3://[a-z0-9][\\.\\-a-z0-9]{1,61}[a-z0-9](/.*)?",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "S3Uri"
+                    ],
+                    "type": "object"
+                },
+                "LanguageCode": {
+                    "description": "The language of the input documents. You can specify English (\"en\") or Spanish (\"es\"). All documents must be in the same language.",
+                    "enum": [
+                        "en",
+                        "es",
+                        "fr",
+                        "de",
+                        "it",
+                        "pt"
+                    ],
+                    "type": "string"
+                }
+            },
+            "required": [
+                "DocumentClassifierName",
+                "DataAccessRoleArn",
+                "InputDataConfig",
+                "LanguageCode"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

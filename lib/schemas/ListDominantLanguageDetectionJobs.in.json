@@ -1,0 +1,92 @@
+{
+    "type": "object",
+    "properties": {
+        "MaxResults": {
+            "required": false,
+            "type": "string"
+        },
+        "NextToken": {
+            "required": false,
+            "type": "string"
+        },
+        "requestBody": {
+            "properties": {
+                "Filter": {
+                    "description": "Filters that jobs that are returned. You can filter jobs on their name, status, or the date and time that they were submitted. You can only set one filter at a time.",
+                    "properties": {
+                        "JobName": {
+                            "description": "Filters on the name of the job.",
+                            "maxLength": 256,
+                            "minLength": 1,
+                            "pattern": "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$",
+                            "type": "string"
+                        },
+                        "JobStatus": {
+                            "description": "Filters the list of jobs based on job status. Returns only jobs with the specified status.",
+                            "enum": [
+                                "SUBMITTED",
+                                "IN_PROGRESS",
+                                "COMPLETED",
+                                "FAILED",
+                                "STOP_REQUESTED",
+                                "STOPPED"
+                            ],
+                            "type": "string"
+                        },
+                        "SubmitTimeAfter": {
+                            "description": "Filters the list of jobs based on the time that the job was submitted for processing. Returns only jobs submitted after the specified time. Jobs are returned in descending order, newest to oldest.",
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        "SubmitTimeBefore": {
+                            "description": "Filters the list of jobs based on the time that the job was submitted for processing. Returns only jobs submitted before the specified time. Jobs are returned in ascending order, oldest to newest.",
+                            "format": "date-time",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "MaxResults": {
+                    "description": "The maximum number of results to return in each page. The default is 100.",
+                    "maximum": 500,
+                    "minimum": 1,
+                    "type": "integer"
+                },
+                "NextToken": {
+                    "description": "Identifies the next page of results to return.",
+                    "minLength": 1,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

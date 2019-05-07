@@ -1,0 +1,110 @@
+{
+    "type": "object",
+    "properties": {
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "properties": {
+                "ClientRequestToken": {
+                    "description": "A unique identifier for the request. If you do not set the client request token, Amazon Comprehend generates one.",
+                    "maxLength": 64,
+                    "minLength": 1,
+                    "pattern": "^[a-zA-Z0-9-]+$",
+                    "type": "string"
+                },
+                "DataAccessRoleArn": {
+                    "description": "The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that grants Amazon Comprehend read access to your input data. For more information, see <a href=\"https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions\">https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions</a>.",
+                    "maxLength": 2048,
+                    "minLength": 20,
+                    "pattern": "arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+",
+                    "type": "string"
+                },
+                "InputDataConfig": {
+                    "description": "Specifies the format and location of the input data for the job.",
+                    "properties": {
+                        "InputFormat": {
+                            "description": "<p>Specifies how the text in an input file should be processed:</p> <ul> <li> <p> <code>ONE_DOC_PER_FILE</code> - Each file is considered a separate document. Use this option when you are processing large documents, such as newspaper articles or scientific papers.</p> </li> <li> <p> <code>ONE_DOC_PER_LINE</code> - Each line in a file is considered a separate document. Use this option when you are processing many short documents, such as text messages.</p> </li> </ul>",
+                            "enum": [
+                                "ONE_DOC_PER_FILE",
+                                "ONE_DOC_PER_LINE"
+                            ],
+                            "type": "string"
+                        },
+                        "S3Uri": {
+                            "description": "<p>The Amazon S3 URI for the input data. The URI must be in same region as the API endpoint that you are calling. The URI can point to a single input file or it can provide the prefix for a collection of data files. </p> <p>For example, if you use the URI <code>S3://bucketName/prefix</code>, if the prefix is a single file, Amazon Comprehend uses that file as input. If more than one file begins with the prefix, Amazon Comprehend uses all of them as input.</p>",
+                            "maxLength": 1024,
+                            "pattern": "s3://[a-z0-9][\\.\\-a-z0-9]{1,61}[a-z0-9](/.*)?",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "S3Uri"
+                    ],
+                    "type": "object"
+                },
+                "JobName": {
+                    "description": "An identifier for the job.",
+                    "maxLength": 256,
+                    "minLength": 1,
+                    "pattern": "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$",
+                    "type": "string"
+                },
+                "OutputDataConfig": {
+                    "description": "Specifies where to send the output files.",
+                    "properties": {
+                        "S3Uri": {
+                            "description": "<p>When you use the <code>OutputDataConfig</code> object with asynchronous operations, you specify the Amazon S3 location where you want to write the output data. The URI must be in the same region as the API endpoint that you are calling. The location is used as the prefix for the actual location of the output file.</p> <p>When the topic detection job is finished, the service creates an output file in a directory specific to the job. The <code>S3Uri</code> field contains the location of the output file, called <code>output.tar.gz</code>. It is a compressed archive that contains the ouput of the operation.</p>",
+                            "maxLength": 1024,
+                            "pattern": "s3://[a-z0-9][\\.\\-a-z0-9]{1,61}[a-z0-9](/.*)?",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "S3Uri"
+                    ],
+                    "type": "object"
+                }
+            },
+            "required": [
+                "InputDataConfig",
+                "OutputDataConfig",
+                "DataAccessRoleArn"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}
